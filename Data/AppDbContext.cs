@@ -5,8 +5,11 @@ namespace ExercicioInventarioMercados.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        public DbSet<FornecedorModel> Fornecedors { get; set; }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        
+        }
+        public DbSet<FornecedorModel> Fornecedores { get; set; }
         public DbSet<CategoriaModel> Categorias { get; set; }
         public DbSet<ProdutoModel> Produtos { get; set; }
     }

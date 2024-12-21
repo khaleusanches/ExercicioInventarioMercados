@@ -7,5 +7,6 @@
         public int Quantidade { get; set; }
         public double Preco { get; set; }
         public FornecedorModel Fornecedor { get; set; }
+        public CategoriaModel Categoria { get; set; }
     }
 }
