@@ -9,6 +9,6 @@ namespace ExercicioInventarioMercados.Services
         Task<RespostaModel<List<FornecedorModel>>> listarFornecedores();
         Task<RespostaModel<FornecedorModel>> buscarFornecedorById(int id);
         Task<RespostaModel<List<FornecedorModel>>> atualizarFornecedor(FornecedorEditarDto fornecedor_editar_dto);
-        Task<RespostaModel<List<FornecedorModel>>> deletarFornecedor();
+        Task<RespostaModel<List<FornecedorModel>>> deletarFornecedor(int id);
     }
 }

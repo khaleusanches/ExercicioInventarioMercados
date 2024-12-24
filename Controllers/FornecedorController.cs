@@ -39,5 +39,11 @@ namespace ExercicioInventarioMercados.Controllers
             var fornecedor = await interface_fornecedor.atualizarFornecedor(fornecedor_editar_dto);
             return Ok(fornecedor);
         }
+        [HttpDelete("DeletarFornecedorPorId/{id}")]
+        public async Task<ActionResult<RespostaModel<List<FornecedorModel>>>> deletarFornecedor(int id)
+        {
+            var fornecedor = await interface_fornecedor.deletarFornecedor(id);
+            return Ok(fornecedor);
+        }
     }
 }

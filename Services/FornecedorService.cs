@@ -103,9 +103,28 @@ namespace ExercicioInventarioMercados.Services
             }
         }
       
-        public Task<RespostaModel<List<FornecedorModel>>> deletarFornecedor()
+        public async Task<RespostaModel<List<FornecedorModel>>> deletarFornecedor(int id)
         {
-            throw new NotImplementedException();
+            RespostaModel<List<FornecedorModel>> resposta = new RespostaModel<List<FornecedorModel>>();
+            try
+            {
+                var fornecedor = await _context.Fornecedores.FindAsync(id);
+                if(fornecedor == null)
+                {
+                    resposta.Mensagem = "Fornecedor não encontrado";
+                    return resposta;
+                }
+                _context.Fornecedores.Remove(fornecedor);
+                await _context.SaveChangesAsync();
+                resposta.Mensagem = "Sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Status = false;
+                resposta.Mensagem = ex.Message;
+                return resposta;
+            }
         }
     }
 }
