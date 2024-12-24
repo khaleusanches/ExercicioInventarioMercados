@@ -44,7 +44,7 @@ namespace ExercicioInventarioMercados.Controllers
             return Ok(categorias);
         }
 
-        [HttpGet("DeletarPorId/{id}")]
+        [HttpDelete("DeletarPorId/{id}")]
         public async Task<ActionResult<RespostaModel<List<CategoriaModel>>>> deletarCategoria(int id)
         {
             var categoria = await _interface_categoria.deletarCategoria(id);
