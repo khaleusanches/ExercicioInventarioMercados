@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddScoped<IFornecedorInterface, FornecedorService>();
+builder.Services.AddScoped<IFornecedorInterface, FornecedorService>(); //Sempre que o código for usar a Interface, será implementada um FornecedorService
 builder.Services.AddScoped<ICategoriaInterface, CategoriaService>();
 builder.Services.AddScoped<IProdutoInterface, ProdutoService>();
 builder.Services.AddSwaggerGen();
