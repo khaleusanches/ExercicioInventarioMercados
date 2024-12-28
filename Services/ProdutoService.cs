@@ -13,6 +13,109 @@ namespace ExercicioInventarioMercados.Services
             _context = context;
         }
 
+        public async Task<RespostaModel<ProdutoModel>> atualizarPrecoProduto(ProdutoPrecoAtualizarDto produto_preco_atualizar_dto)
+        {
+            RespostaModel<ProdutoModel> resposta = new RespostaModel<ProdutoModel>();
+            try
+            {
+                var produto = await _context.Produtos.FindAsync(produto_preco_atualizar_dto.Id);
+                if(produto == null)
+                {
+                    resposta.Mensagem = "Produto não encontrado";
+                    return resposta;
+                }
+                produto.Preco = produto_preco_atualizar_dto.Preco;
+                await _context.SaveChangesAsync();
+                resposta.Dados = produto;
+                resposta.Mensagem = "Sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.Status = false;
+                return resposta;
+            }
+        }
+
+        public async Task<RespostaModel<ProdutoModel>> atualizarProduto(ProdutoAtualizarDto produto_atualizar_dto)
+        {
+            RespostaModel<ProdutoModel> resposta = new RespostaModel<ProdutoModel>();
+            try
+            {
+                var produto = await _context.Produtos.FindAsync(produto_atualizar_dto.Id);
+                if(produto == null)
+                {
+                    resposta.Mensagem = "Produto não encontrado";
+                    return resposta;
+                }
+                produto.Nome = produto_atualizar_dto.Nome;
+                produto.Quantidade = produto_atualizar_dto.Quantidade;
+                produto.Preco = produto_atualizar_dto.Preco;
+                produto.Categoria = await _context.Categorias.FindAsync(produto_atualizar_dto.Id_categoria);
+                produto.Fornecedor = await _context.Fornecedores.FindAsync(produto_atualizar_dto.Id_fornecedor);
+                await _context.SaveChangesAsync();
+                resposta.Dados = produto;
+                resposta.Mensagem = "Sucesso";
+                return resposta;
+
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = "Error";
+                resposta.Status = false;
+                return resposta;
+            }
+        }
+
+        public async Task<RespostaModel<ProdutoModel>> atualizarQuantidadeProduto(ProdutoQuantidadeAtualizarDto produto_quantidade_atualizar_dto)
+        {
+            RespostaModel<ProdutoModel> resposta = new RespostaModel<ProdutoModel>();
+            try
+            {
+                var produto = await _context.Produtos.FindAsync(produto_quantidade_atualizar_dto.Id);
+                if (produto == null)
+                {
+                    resposta.Mensagem = "Produto não encontrado";
+                    return resposta;
+                }
+                produto.Preco = produto_quantidade_atualizar_dto.Quantidade;
+                await _context.SaveChangesAsync();
+                resposta.Dados = produto;
+                resposta.Mensagem = "Sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.Status = false;
+                return resposta;
+            }
+        }
+
+        public async Task<RespostaModel<ProdutoModel>> buscarProdutoPorId(int id)
+        {
+            RespostaModel<ProdutoModel> resposta = new RespostaModel<ProdutoModel>();
+            try 
+            {
+                var produto = await _context.Produtos.FindAsync(id);
+                if(produto == null)
+                {
+                    resposta.Mensagem = "Produto não encontrado";
+                    return resposta;
+                }
+                resposta.Dados = produto;
+                resposta.Mensagem = "Sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.Status = false;
+                return resposta;
+            }
+        }
+
         public async Task<RespostaModel<ProdutoModel>> criarProduto(ProdutoCriarDto produto_criar_dto)
         {
             RespostaModel<ProdutoModel> resposta = new RespostaModel<ProdutoModel>();
@@ -36,6 +139,31 @@ namespace ExercicioInventarioMercados.Services
                 await _context.Produtos.AddAsync(new_produto);
                 await _context.SaveChangesAsync();
                 resposta.Dados = new_produto;
+                resposta.Mensagem = "Sucesso";
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.Status = false;
+                return resposta;
+            }
+        }
+
+        public async Task<RespostaModel<List<ProdutoModel>>> deletarProduto(int id)
+        {
+            RespostaModel<List<ProdutoModel>> resposta = new RespostaModel<List<ProdutoModel>>();
+            try
+            {
+                var produto = await _context.Produtos.FindAsync(id);
+                if(produto == null)
+                {
+                    resposta.Mensagem = "Produto não encontrado";
+                }
+                _context.Produtos.Remove(produto);
+                await _context.SaveChangesAsync();
+                var produtos = await _context.Produtos.ToListAsync();
+                resposta.Dados = produtos;
                 resposta.Mensagem = "Sucesso";
                 return resposta;
             }

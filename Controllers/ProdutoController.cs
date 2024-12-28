@@ -28,5 +28,35 @@ namespace ExercicioInventarioMercados.Controllers
             var new_produto = await _interface_produto.criarProduto(produto_criar_dto);
             return new_produto;
         }
+        [HttpGet("BuscarPorId/{id}")]
+        public async Task<ActionResult<RespostaModel<ProdutoModel>>> buscarProdutoPorID(int id)
+        {
+            var produto = await _interface_produto.buscarProdutoPorId(id);
+            return Ok(produto);
+        }
+        [HttpPut("AtualizarProduto/{id}")]
+        public async Task<ActionResult<RespostaModel<ProdutoModel>>> atualizarProduto(ProdutoAtualizarDto produto_atualizar_dto)
+        {
+            var produto = await _interface_produto.atualizarProduto(produto_atualizar_dto);
+            return Ok(produto);
+        }
+        [HttpPut("AtualizarPreco")]
+        public async Task<ActionResult<RespostaModel<ProdutoModel>>> atualizarPrecoProduto(ProdutoPrecoAtualizarDto produto_atualizar_dto)
+        {
+            var produto = await _interface_produto.atualizarPrecoProduto(produto_atualizar_dto);
+            return Ok(produto);
+        }
+        [HttpPut("AtualizarQuantidade")]
+        public async Task<ActionResult<RespostaModel<ProdutoModel>>> atualizarQuantiadeProduto(ProdutoQuantidadeAtualizarDto produto_atualizar_dto)
+        {
+            var produto = await _interface_produto.atualizarQuantidadeProduto(produto_atualizar_dto);
+            return Ok(produto);
+        }
+        [HttpDelete("DeletarProdutoPorId/{id}")]
+        public async Task<ActionResult<RespostaModel<List<ProdutoModel>>>> deletarProduto(int id)
+        {
+            var produto = await _interface_produto.deletarProduto(id);
+            return Ok(produto);
+        }
     }
 }
