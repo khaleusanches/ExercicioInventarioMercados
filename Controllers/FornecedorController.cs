@@ -25,6 +25,10 @@ namespace ExercicioInventarioMercados.Controllers
         public async Task<ActionResult<RespostaModel<List<FornecedorModel>>>> listarFornecedores()
         {
             var fornecedores = await interface_fornecedor.listarFornecedores();
+            if(fornecedores.Status == false)
+            {
+                return BadRequest(fornecedores);
+            }
             return Ok(fornecedores);
         }
         [HttpGet("BuscarPorID/{id_fornecedor}")]

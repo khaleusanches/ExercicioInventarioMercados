@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExercicioInventarioMercados", "ExercicioInventarioMercados.csproj", "{49D72F73-E007-4490-BF88-AB4E5D3548F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExercicioInventarioMercados", "ExercicioInventarioMercados.csproj", "{49D72F73-E007-4490-BF88-AB4E5D3548F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExercicioInventarioMercadosTestXUnit", "..\ExercicioInventarioMercadosTestXUnit\ExercicioInventarioMercadosTestXUnit.csproj", "{92AA9288-D226-4A5F-8AA2-FB43FD33ED75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{49D72F73-E007-4490-BF88-AB4E5D3548F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D72F73-E007-4490-BF88-AB4E5D3548F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D72F73-E007-4490-BF88-AB4E5D3548F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92AA9288-D226-4A5F-8AA2-FB43FD33ED75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92AA9288-D226-4A5F-8AA2-FB43FD33ED75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92AA9288-D226-4A5F-8AA2-FB43FD33ED75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92AA9288-D226-4A5F-8AA2-FB43FD33ED75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

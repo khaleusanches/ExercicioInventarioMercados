@@ -23,6 +23,7 @@ namespace ExercicioInventarioMercados.Services
                 var categorias = await _context.Categorias.ToListAsync();
                 resposta.Dados = categorias;
                 resposta.Mensagem = "Sucesso";
+                resposta.Status = false;
                 return resposta;
             }
             catch (Exception ex)

@@ -20,6 +20,10 @@ namespace ExercicioInventarioMercados.Controllers
         public async Task<ActionResult<RespostaModel<List<CategoriaModel>>>> listarCategorias()
         {
             var categorias = await _interface_categoria.listarCategorias();
+            if(categorias.Status == false)
+            {
+                return BadRequest(categorias);
+            }
             return Ok(categorias);
         }
 
